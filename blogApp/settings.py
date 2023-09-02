@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,6 +36,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'tinymce',
+    
     'home.apps.HomeConfig',
     'django_browser_reload',
     'django.contrib.admin',
@@ -157,7 +159,7 @@ else:
   STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
   STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-
+django_heroku.settings(locals())
 # EMAIL CONFIGURATION (for contact form)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
